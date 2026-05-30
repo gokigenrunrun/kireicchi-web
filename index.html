@@ -4,32 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>きれいっち — AI×キャラ育成のお片づけアプリ</title>
+<link rel="icon" href="kireicchi_images/AppIcon.appiconset/Icon-60@2x.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --pink: #FD98B8;
-  --pink-dark: #C2627E;
-  --blue: #92D9FD;
-  --blue-dark: #1A6FAD;
-  --cream: #FFF9E6;
-  --brown: #5C3D2E;
-  --purple: #C8A8D8;
+  --pink: #FFC6D9;
+  --pink-dark: #D96E94;
+  --blue: #A9DFF9;
+  --blue-dark: #3E8FBF;
+  --yellow: #FFE497;
+  --yellow-dark: #E8B53A;
+  --cream: #FFF9EF;
+  --brown: #4C3E3C;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Zen Maru Gothic', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   background: var(--cream);
   color: var(--brown);
   overflow-x: hidden;
 }
 
+.pixfont { font-family: 'Press Start 2P', monospace; letter-spacing: 0; }
+
 /* ========== HERO ========== */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(160deg, var(--pink) 0%, var(--purple) 45%, var(--blue) 100%);
+  background: linear-gradient(180deg, var(--pink) 0%, #FFEFC2 24%, var(--cream) 50%, #CDEBFB 76%, var(--blue) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,8 +48,9 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.18) 0%, transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(255,255,255,0.12) 0%, transparent 40%);
+    radial-gradient(circle at 14% 16%, rgba(169,223,249,0.40) 0%, transparent 42%),
+    radial-gradient(circle at 86% 14%, rgba(255,198,217,0.35) 0%, transparent 42%),
+    radial-gradient(circle at 80% 90%, rgba(255,228,151,0.30) 0%, transparent 46%);
   pointer-events: none;
 }
 
@@ -53,10 +58,10 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+    radial-gradient(circle, rgba(76,62,60,0.07) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .hero-inner {
@@ -64,6 +69,14 @@ body {
   z-index: 1;
   text-align: center;
   max-width: 700px;
+}
+
+.hero-logo {
+  width: clamp(200px, 42vw, 340px);
+  height: auto;
+  margin: 0 auto 4px;
+  display: block;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
 }
 
 .award-badge {
@@ -81,11 +94,14 @@ body {
   animation: fadeSlideDown 0.6s ease both;
 }
 
+.badge-icon { width: 18px; height: 18px; image-rendering: pixelated; }
+.btn-appicon { width: 22px; height: 22px; border-radius: 5px; image-rendering: pixelated; }
+
 .hero-title {
   font-family: 'DotGothic16', monospace;
-  font-size: clamp(72px, 18vw, 120px);
+  font-size: clamp(56px, 15vw, 104px);
   color: var(--blue-dark);
-  text-shadow: 4px 4px 0 #0D4F8A, 6px 6px 0 rgba(255,255,255,0.3);
+  text-shadow: 4px 4px 0 #2E7AA6, 6px 6px 0 rgba(255,255,255,0.4);
   line-height: 1;
   margin-bottom: 16px;
   animation: fadeSlideDown 0.7s ease 0.1s both;
@@ -98,23 +114,23 @@ body {
   gap: 10px;
   font-family: 'DotGothic16', monospace;
   font-size: clamp(14px, 3.5vw, 20px);
-  color: white;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+  color: var(--brown);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
   margin-bottom: 32px;
   animation: fadeSlideDown 0.7s ease 0.2s both;
 }
 
 .hero-sub::before, .hero-sub::after {
   content: '◇';
-  color: rgba(255,255,255,0.7);
+  color: var(--pink-dark);
   font-size: 12px;
 }
 
 .hero-catch {
   font-size: clamp(18px, 4vw, 26px);
   font-weight: 700;
-  color: white;
-  text-shadow: 2px 2px 0 var(--pink-dark);
+  color: var(--brown);
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.6);
   margin-bottom: 40px;
   line-height: 1.5;
   animation: fadeSlideDown 0.7s ease 0.3s both;
@@ -139,14 +155,14 @@ body {
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
-  border: 3px solid #9B3D5A;
-  box-shadow: 0 4px 0 #9B3D5A;
+  border: 3px solid #C45A80;
+  box-shadow: 0 4px 0 #C45A80;
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .btn-primary:hover {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #9B3D5A;
+  box-shadow: 0 2px 0 #C45A80;
 }
 
 .btn-secondary {
@@ -228,34 +244,26 @@ body {
 .ba-label.before { background: var(--brown); color: white; }
 .ba-label.after { background: var(--pink-dark); color: white; }
 
-.ba-room {
+.ba-img {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.ba-score {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  font-size: 60px;
+  gap: 8px;
+  margin: 12px 0;
+  color: var(--brown);
 }
 
-.ba-room.messy {
-  background: linear-gradient(135deg, #D4A76A 0%, #C49A55 50%, #B8864A 100%);
-  font-family: 'DotGothic16', monospace;
-  color: rgba(255,255,255,0.8);
-  font-size: 14px;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ba-room.clean {
-  background: linear-gradient(135deg, #AEE8D0 0%, #7FCBB8 50%, #5BB5A0 100%);
-  font-family: 'DotGothic16', monospace;
-  color: rgba(255,255,255,0.9);
-  font-size: 14px;
-  flex-direction: column;
-  gap: 8px;
-}
+.ba-score .pixfont { font-size: 22px; color: var(--pink-dark); }
+.ba-score-label { font-size: 12px; }
 
 .chara-bubble {
   display: flex;
@@ -343,6 +351,15 @@ body {
   display: block;
 }
 
+.feature-icon-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  margin: 0 auto 14px;
+  display: block;
+  image-rendering: pixelated;
+}
+
 .feature-title {
   font-family: 'DotGothic16', monospace;
   font-size: 15px;
@@ -359,20 +376,21 @@ body {
 
 /* ========== HOW TO ========== */
 .section-howto {
-  background: linear-gradient(160deg, var(--pink) 0%, var(--purple) 50%, var(--blue) 100%);
+  background: linear-gradient(180deg, var(--cream) 0%, #FCEFF4 55%, var(--blue) 100%);
   padding: 80px 24px;
   text-align: center;
 }
 
-.section-howto .section-title { color: white; text-shadow: 2px 2px 0 var(--pink-dark); }
-.section-howto .section-desc { color: rgba(255,255,255,0.9); }
+.section-howto .section-title { color: var(--pink-dark); text-shadow: 2px 2px 0 rgba(0,0,0,0.06); }
+.section-howto .section-desc { color: var(--brown); }
 
 .steps {
   display: flex;
   gap: 0;
   justify-content: center;
+  align-items: stretch;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
@@ -380,8 +398,8 @@ body {
   background: rgba(255,255,255,0.92);
   border: 3px solid white;
   border-radius: 16px;
-  padding: 28px 20px;
-  width: 200px;
+  padding: 28px 18px;
+  width: clamp(170px, 22vw, 190px);
   position: relative;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
 }
@@ -401,6 +419,15 @@ body {
 }
 
 .step-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+
+.step-icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 6px;
+  display: block;
+  image-rendering: pixelated;
+}
 
 .step-title {
   font-family: 'DotGothic16', monospace;
@@ -450,7 +477,7 @@ body {
 
 /* ========== TEAM ========== */
 .section-team {
-  background: linear-gradient(180deg, var(--blue) 0%, var(--purple) 100%);
+  background: linear-gradient(180deg, var(--blue) 0%, var(--pink) 100%);
   padding: 80px 24px;
   text-align: center;
 }
@@ -563,6 +590,18 @@ body {
   font-size: 13px;
   color: var(--brown);
   line-height: 2;
+  list-style: none;
+}
+
+.qr-note li { display: flex; align-items: center; gap: 8px; }
+.qr-note li::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  background: var(--pink-dark);
+  box-shadow: 2px 0 0 var(--blue-dark);
+  image-rendering: pixelated;
 }
 
 .contact-box {
@@ -573,6 +612,15 @@ body {
   font-size: 13px;
   color: var(--brown);
   margin-top: 16px;
+}
+
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: -4px;
+  margin-right: 4px;
+  image-rendering: pixelated;
 }
 
 /* ========== FOOTER ========== */
@@ -607,13 +655,142 @@ footer {
   transform: translateY(0);
 }
 
+/* ========== HOW-TO FLOW (使い方＋アプリ画面) ========== */
+.howto-flow {
+  max-width: 1040px;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 80px);
+}
+
+.howto-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 6vw, 72px);
+  flex-wrap: wrap;
+}
+
+.howto-row:nth-child(even) { flex-direction: row-reverse; }
+
+.howto-phone {
+  width: clamp(200px, 44vw, 280px);
+  flex-shrink: 0;
+}
+
+.howto-cheer {
+  width: clamp(180px, 40vw, 250px);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howto-cheer .chara-img { width: 100%; }
+
+.howto-body {
+  flex: 1 1 300px;
+  max-width: 420px;
+  text-align: left;
+  position: relative;
+}
+
+.howto-num {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(48px, 9vw, 88px);
+  line-height: 1;
+  display: block;
+  margin-bottom: 14px;
+  -webkit-text-stroke: 2px var(--brown);
+  letter-spacing: 2px;
+}
+
+.howto-pill {
+  display: inline-block;
+  font-family: 'DotGothic16', monospace;
+  font-size: clamp(17px, 2.6vw, 22px);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.12);
+}
+
+.howto-body .step-desc {
+  font-size: 14px;
+  color: var(--brown);
+  line-height: 1.9;
+  max-width: 360px;
+}
+
+/* 行ごとのアクセント色 */
+.howto-row.acc-sky   .howto-num { color: var(--blue);   }
+.howto-row.acc-sky   .howto-pill { background: var(--blue-dark); }
+.howto-row.acc-pink  .howto-num { color: var(--pink);   }
+.howto-row.acc-pink  .howto-pill { background: var(--pink-dark); }
+.howto-row.acc-yellow .howto-num { color: var(--yellow); }
+.howto-row.acc-yellow .howto-pill { background: var(--yellow-dark); }
+.howto-bonus .howto-num { font-size: clamp(40px, 7vw, 64px); }
+
+.phone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1419 / 2796;
+}
+
+.phone-screen {
+  position: absolute;
+  top: 4.33%;
+  bottom: 4.33%;
+  left: 8.46%;
+  right: 8.53%;
+  overflow: hidden;
+  border-radius: 8% / 4%;
+  background: #000;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.phone-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ========== CHARACTER ========== */
+.chara-img { image-rendering: pixelated; height: auto; display: block; }
+
+.hero-chara {
+  width: clamp(96px, 20vw, 150px);
+  margin: 4px auto 18px;
+}
+
+.chara-face .chara-img { width: 100%; height: 100%; object-fit: contain; }
+
+.features-chara {
+  width: clamp(70px, 14vw, 96px);
+  margin: 0 auto 4px;
+}
+
+.cta-chara { width: clamp(90px, 18vw, 120px); margin: 0 auto 8px; }
+
+.footer-chara { width: 56px; margin: 0 auto 10px; opacity: 0.95; }
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 600px) {
   .ba-row { flex-direction: column; align-items: center; }
   .arrow-icon { transform: rotate(90deg); }
-  .steps { gap: 8px; }
-  .step { width: 100%; max-width: 300px; }
-  .step-arrow { display: none; }
+  .howto-row, .howto-row:nth-child(even) { flex-direction: column; }
+  .howto-body { text-align: center; max-width: 340px; }
+  .howto-body .step-desc { margin: 0 auto; }
 }
 </style>
 </head>
@@ -623,16 +800,18 @@ footer {
 <section class="hero">
   <div class="pixel-dots"></div>
   <div class="hero-inner">
-    <div class="award-badge">🏆 技育CAMPハッカソン2026 vol.2 最優秀賞</div>
-    <h1 class="hero-title float">きれいっち</h1>
+    <div class="award-badge"><img class="badge-icon" src="kireicchi_images/icons/icon_crown.png" alt="">技育CAMPハッカソン2026 vol.2 最優秀賞</div>
+    <img class="hero-logo float" src="kireicchi_images/logo_Kireicchi.png" alt="きれいっち ロゴ">
+    <h1 class="hero-title">きれいっち</h1>
     <p class="hero-sub">AI×キャラ育成のお片づけアプリ</p>
     <p class="hero-catch">始めよう、自分のためだけじゃない<br>片付け習慣。</p>
+    <img class="chara-img hero-chara float" src="kireicchi_images/char_happy.png" alt="きれいっち" decoding="async">
     <div class="hero-btns">
       <a href="https://apps.apple.com/jp/app/%E3%81%8D%E3%82%8C%E3%81%84%E3%81%A3%E3%81%A1/id6770149722" class="btn-primary" target="_blank">
-        🍎 App Storeでダウンロード
+        <img class="btn-appicon" src="kireicchi_images/AppIcon.appiconset/Icon-60@2x.png" alt="">App Storeでダウンロード
       </a>
       <a href="#features" class="btn-secondary">
-        ✨ 詳しく見る
+        詳しく見る
       </a>
     </div>
   </div>
@@ -644,25 +823,19 @@ footer {
   <p class="section-desc">散らかった部屋を撮影するだけで<br>AIがスコア化。きれいっちと一緒に片付けを楽しもう！</p>
   <div class="ba-row">
     <div class="ba-card">
-      <span class="ba-label before">Before...</span>
-      <div class="ba-room messy">
-        <span>🧦👕📚</span>
-        <span style="font-size:12px">散らかり度 高め...</span>
-      </div>
+      <img class="ba-img" src="kireicchi_images/before.png" alt="散らかったお部屋（Before）" loading="lazy" decoding="async">
+      <p class="ba-score"><span class="pixfont">40</span> <span class="ba-score-label">散らかり度 高め...</span></p>
       <div class="chara-bubble">
-        <div class="chara-face">😢</div>
+        <div class="chara-face"><img class="chara-img" src="kireicchi_images/char_sad.png" alt="しょんぼりしたきれいっち" loading="lazy" decoding="async"></div>
         <div class="bubble-text">そろそろ、お片づけしてくれたら嬉しいな</div>
       </div>
     </div>
     <div class="arrow-icon">→</div>
     <div class="ba-card">
-      <span class="ba-label after">After!</span>
-      <div class="ba-room clean">
-        <span>✨🌱💐</span>
-        <span style="font-size:12px">スコア 90/100！</span>
-      </div>
+      <img class="ba-img" src="kireicchi_images/after.png" alt="片付いたお部屋（After）" loading="lazy" decoding="async">
+      <p class="ba-score"><span class="pixfont">90</span> <span class="ba-score-label">スコア 90/100！</span></p>
       <div class="chara-bubble">
-        <div class="chara-face">😊</div>
+        <div class="chara-face"><img class="chara-img" src="kireicchi_images/char_happy.png" alt="元気になったきれいっち" loading="lazy" decoding="async"></div>
         <div class="bubble-text">わーい！キレイになって元気100倍！</div>
       </div>
     </div>
@@ -672,36 +845,37 @@ footer {
 <!-- FEATURES -->
 <section class="section-features fade-in" id="features">
   <div class="features-inner">
+    <img class="chara-img features-chara" src="kireicchi_images/char_normal.png" alt="きれいっち" loading="lazy" decoding="async">
     <p class="section-title">主な特徴</p>
     <p class="section-desc">きれいっちが持つ、ちょっと特別な機能たち</p>
     <div class="features-grid">
       <div class="feature-card">
-        <span class="feature-icon">🔍</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_score.png" alt="" loading="lazy">
         <p class="feature-title">AIが散らかり度を採点</p>
         <p class="feature-desc">写真を撮るだけで0〜100点でスコア化。どこから片付ければいいか一目でわかる！</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🎨</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_dot.png" alt="" loading="lazy">
         <p class="feature-title">お部屋がドット絵に</p>
         <p class="feature-desc">AIがお部屋をドット絵に変換。スコアに応じてきれいっちの表情が変わる！</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">👥</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_friends.png" alt="" loading="lazy">
         <p class="feature-title">友達をお部屋に招待</p>
         <p class="feature-desc">友達のきれいっちをお部屋に呼べる。人が来るから片付けたくなる仕組み。</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🏃</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_runaway.png" alt="" loading="lazy">
         <p class="feature-title">放置すると家出する！？</p>
-        <p class="feature-desc">7日間撮影しないとキャラが家出しちゃう…だから自然と続けられる。</p>
+        <p class="feature-desc">長い間撮影しないと、きれいっちが家出しちゃう…だから自然と続けられる。</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">⏱️</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_timer.png" alt="" loading="lazy">
         <p class="feature-title">お片づけタイマー</p>
         <p class="feature-desc">時間を決めて片付けにチャレンジ。きれいっちが応援してくれる！</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">📊</span>
+        <img class="feature-icon-img" src="kireicchi_images/icons/icon_graph.png" alt="" loading="lazy">
         <p class="feature-title">記録グラフで可視化</p>
         <p class="feature-desc">スコアの履歴をグラフで確認。頑張りの積み重ねが一目でわかる！</p>
       </div>
@@ -709,31 +883,79 @@ footer {
   </div>
 </section>
 
-<!-- HOW TO -->
+<!-- HOW TO + アプリ画面 -->
 <section class="section-howto fade-in">
-  <p class="section-title">使い方はかんたん3ステップ</p>
-  <p class="section-desc">むずかしい操作は一切なし。撮るだけでOK！</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <span class="step-icon">📸</span>
-      <p class="step-title">お部屋を撮影</p>
-      <p class="step-desc">カメラボタンを押してお部屋をパシャり。1日2回まで撮影できる。</p>
+  <p class="section-title">使い方はかんたん4ステップ</p>
+  <p class="section-desc">実際のアプリ画面で、使い方を見てみよう！</p>
+  <div class="howto-flow">
+
+    <div class="howto-row acc-sky">
+      <div class="howto-phone">
+        <div class="phone">
+          <div class="phone-screen"><img src="kireicchi_images/IMG_3840.PNG" alt="ホーム画面" loading="lazy" decoding="async"></div>
+          <img class="phone-frame" src="kireicchi_images/iPhone%2015%20-%20Pink%20-%20Portrait.png" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="howto-body">
+        <span class="howto-num">01</span>
+        <span class="howto-pill">撮影時間を設定</span>
+        <p class="step-desc">1日2回、決まった時間に通知が届くから、無理なく続けられる。</p>
+      </div>
     </div>
-    <div class="step-arrow">→</div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <span class="step-icon">🤖</span>
-      <p class="step-title">AIが自動診断</p>
-      <p class="step-desc">AIがスコア化＆ドット絵に変換。片付けミッションも自動生成！</p>
+
+    <div class="howto-row acc-pink">
+      <div class="howto-phone">
+        <div class="phone">
+          <div class="phone-screen"><img src="kireicchi_images/IMG_3839.PNG" alt="AIが採点した結果画面" loading="lazy" decoding="async"></div>
+          <img class="phone-frame" src="kireicchi_images/iPhone%2015%20-%20Pink%20-%20Portrait.png" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="howto-body">
+        <span class="howto-num">02</span>
+        <span class="howto-pill">通知が来たら撮影</span>
+        <p class="step-desc">AIが100点満点で採点＆ドット絵化。どこから片付ければいいかも提案！</p>
+      </div>
     </div>
-    <div class="step-arrow">→</div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <span class="step-icon">✨</span>
-      <p class="step-title">きれいっちが元気に</p>
-      <p class="step-desc">スコアが上がるほどきれいっちがハッピーに！継続で習慣化。</p>
+
+    <div class="howto-row acc-yellow">
+      <div class="howto-cheer">
+        <img class="chara-img" src="kireicchi_images/char_cheer.png" alt="応援するきれいっち" loading="lazy" decoding="async">
+      </div>
+      <div class="howto-body">
+        <span class="howto-num">03</span>
+        <span class="howto-pill">タイマーで片付け</span>
+        <p class="step-desc">お片付けタイマーをセット。タイマー中はきれいっちが応援してくれる！</p>
+      </div>
     </div>
+
+    <div class="howto-row acc-sky">
+      <div class="howto-phone">
+        <div class="phone">
+          <div class="phone-screen"><img src="kireicchi_images/IMG_3842.PNG" alt="記録のグラフ画面" loading="lazy" decoding="async"></div>
+          <img class="phone-frame" src="kireicchi_images/iPhone%2015%20-%20Pink%20-%20Portrait.png" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="howto-body">
+        <span class="howto-num">04</span>
+        <span class="howto-pill">もう一度撮影</span>
+        <p class="step-desc">スコアアップで達成感！きれいっちが元気を取り戻す姿が継続の励みに。</p>
+      </div>
+    </div>
+
+    <div class="howto-row acc-pink howto-bonus">
+      <div class="howto-phone">
+        <div class="phone">
+          <div class="phone-screen"><img src="kireicchi_images/IMG_3841.PNG" alt="ともだちを探す画面" loading="lazy" decoding="async"></div>
+          <img class="phone-frame" src="kireicchi_images/iPhone%2015%20-%20Pink%20-%20Portrait.png" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="howto-body">
+        <span class="howto-num">＋</span>
+        <span class="howto-pill">ともだちと一緒に</span>
+        <p class="step-desc">近くのともだちを見つけて、お互いのきれいっちに会える。みんなで楽しく続けよう！</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -776,30 +998,32 @@ footer {
 <!-- CTA -->
 <section class="section-cta fade-in">
   <div class="cta-box">
+    <img class="chara-img cta-chara" src="kireicchi_images/char_cheer.png" alt="応援するきれいっち" loading="lazy" decoding="async">
     <p class="cta-title">App Storeで配信中！</p>
-    <p class="cta-desc">「きれいっち」で検索、またはQRコードからダウンロード🎉</p>
+    <p class="cta-desc">「きれいっち」で検索、またはQRコードからダウンロード！</p>
     <div class="qr-wrap">
       <img class="qr-img"
-        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://apps.apple.com/jp/app/id6770149722&color=1A6FAD&bgcolor=FFFFFF"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://apps.apple.com/jp/app/id6770149722&color=3E8FBF&bgcolor=FFFFFF"
         alt="App Store QRコード"
       />
-      <div class="qr-note">
-        📱 QRコードを読み取る<br>
-        🔍「きれいっち」で検索<br>
-        🍎 App Storeで無料配信中
-      </div>
+      <ul class="qr-note">
+        <li>QRコードを読み取る</li>
+        <li>「きれいっち」で検索</li>
+        <li>App Storeで無料配信中</li>
+      </ul>
     </div>
     <a href="https://apps.apple.com/jp/app/%E3%81%8D%E3%82%8C%E3%81%84%E3%81%A3%E3%81%A1/id6770149722"
       class="btn-primary" target="_blank" style="display:inline-flex;margin-bottom:16px;">
-      🍎 ダウンロードする
+      <img class="btn-appicon" src="kireicchi_images/AppIcon.appiconset/Icon-60@2x.png" alt="">ダウンロードする
     </a>
     <div class="contact-box">
-      ✉️ お問い合わせ：chamiko.dev@gmail.com
+      <img class="contact-icon" src="kireicchi_images/okitegami.png" alt="" loading="lazy">お問い合わせ：chamiko.dev@gmail.com
     </div>
   </div>
 </section>
 
 <footer>
+  <img class="chara-img footer-chara" src="kireicchi_images/char_normal.png" alt="きれいっち" loading="lazy" decoding="async">
   <p>© 2026 ちゃみっけ！ — きれいっち</p>
   <p style="margin-top:6px;">技育CAMPハッカソン2026 vol.2 最優秀賞受賞</p>
 </footer>
